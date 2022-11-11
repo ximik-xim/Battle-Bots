@@ -41,23 +41,23 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Haracteristic\Haracteristic.cs" />
-     <Compile Include="Assets\Haracteristic\CubeHaracteristic.cs" />
-     <Compile Include="Assets\ControlEntity.cs" />
      <Compile Include="Assets\Abstract Actions\Move\AbstractMove.cs" />
-     <Compile Include="Assets\LogicCube.cs" />
-     <Compile Include="Assets\Abstract Actions\Attack\AbstractAttack.cs" />
+     <Compile Include="Assets\Fabric\PollFabric\PreafbeFabric\DicteneryPrefabe\EntityFabric.cs" />
+     <Compile Include="Assets\Fabric\PollFabric\PreafbeFabric\DicteneryPrefabe\DicteneryElementFabric.cs" />
+     <Compile Include="Assets\PoolReact\Entity\CubeEntity\CubeEntity.cs" />
+     <Compile Include="Assets\Haracteristic\CubeHaracteristic.cs" />
+     <Compile Include="Assets\Haracteristic\Haracteristic.cs" />
+     <Compile Include="Assets\Pool.cs" />
+     <Compile Include="Assets\ControlEntity.cs" />
+     <Compile Include="Assets\PoolReact\Entity\Entity.cs" />
      <Compile Include="Assets\Abstract Actions\Scan\AbstractScan.cs" />
      <Compile Include="Assets\Fabric\PollFabric\PoolFabric.cs" />
-     <Compile Include="Assets\Fabric\SpawnFabric.cs" />
-     <Compile Include="Assets\Fabric\PollFabric\PreafbeFabric\DicteneryPrefabe\DicteneryElementFabric.cs" />
-     <Compile Include="Assets\PoolReact\Entity\Entity.cs" />
-     <Compile Include="Assets\PoolReact\PoolReact.cs" />
-     <Compile Include="Assets\MySerializeDictenery\CustomDictionary.cs" />
-     <Compile Include="Assets\Pool.cs" />
+     <Compile Include="Assets\LogicCube.cs" />
      <Compile Include="Assets\MySerializeDictenery\SerializeDictionary.cs" />
-     <Compile Include="Assets\Fabric\PollFabric\PreafbeFabric\DicteneryPrefabe\EntityFabric.cs" />
-     <Compile Include="Assets\PoolReact\Entity\CubeEntity\CubeEntity.cs" />
+     <Compile Include="Assets\MySerializeDictenery\CustomDictionary.cs" />
+     <Compile Include="Assets\PoolReact\PoolReact.cs" />
+     <Compile Include="Assets\Abstract Actions\Attack\AbstractAttack.cs" />
+     <Compile Include="Assets\Fabric\SpawnFabric.cs" />
      <Compile Include="Assets\Fabric\PollFabric\PreafbeFabric\DicteneryPrefabe\CubeFabric.cs" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.12f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
