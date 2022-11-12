@@ -6,6 +6,6 @@ using UnityEngine;
 public abstract class AbstractMove : MonoBehaviour
 {
     public abstract void Patrolling();
-    public abstract void MoveTarget(Vector3 position, float distance, Action action, float moveSpeed);
+    public abstract void MoveTarget(Transform target, float distance, Action action, float moveSpeed);
     public abstract void Stop();
 }
