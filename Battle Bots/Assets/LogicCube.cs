@@ -4,62 +4,58 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LogicCube : MonoBehaviour
-{
+{ 
     [SerializeField] private CubeEntity _cube;
-    private CubeHaracteristic _currentHaracteristic;
-    private ControlEntity _controlEntity;
-
-    private CubeHaracteristic _haracteristicTarget;
+    [SerializeField] private ControlEntity _controlEntity;
+    
     private Entity _entity;
 
     private void Start()
-    {
-        _controlEntity.SearchEnemy(_currentHaracteristic.DetectionRange,DetectEnemy);
-        _currentHaracteristic = _cube.CubeHaracteristic;
+    { 
+        _controlEntity.SearchEnemy(_cube.DetectionRange,DetectEnemy);
     }
 
-    
+
     private void DetectEnemy(Entity entity)
     {
-       
         if (CheckTargetHp(entity))
         {
             _controlEntity.EndSearchEnemy();
-            _controlEntity.MoveTarget(entity, CloseEnemy,_currentHaracteristic.RangeAttake,_currentHaracteristic.MoveSpeed);//вот тут нужно решить вопрос, где будет храниться параметры
-           
+            _controlEntity.MoveTarget(entity, MoveToEnemy,_cube.RangeAttake,_cube.MoveSpeed);
+            
             return;
         } 
         
-        _controlEntity.SearchEnemy(_currentHaracteristic.DetectionRange,DetectEnemy);
+        _controlEntity.SearchEnemy(_cube.DetectionRange,DetectEnemy);
     }
     
-    private void CloseEnemy()
+    private void MoveToEnemy()
     {
         if (CheckHaractericsic())
         { 
             //_fas.EndMove();//в случае если останавливаемся перед атакой
-            _controlEntity.AttackTarget(_entity, _currentHaracteristic.RangeAttake / 2, _currentHaracteristic.Damage, EndAttack);
+            _controlEntity.AttackTarget(_entity, _cube.RangeAttake / 2, _cube.Damage, EndAttack);
             return;
         }
         
-        _controlEntity.SearchEnemy(_currentHaracteristic.DetectionRange,DetectEnemy);
+        _controlEntity.SearchEnemy(_cube.DetectionRange,DetectEnemy);
     }
     
-    private void EndAttack(Entity entity)
+    private void EndAttack(bool attackEnd)
     {
         if (CheckHaractericsic())
         {
-            _controlEntity.MoveTarget(entity, CloseEnemy, _currentHaracteristic.RangeAttake / 2, _currentHaracteristic.MoveSpeed);
+            _controlEntity.MoveTarget(_entity, MoveToEnemy, _cube.RangeAttake / 2, _cube.MoveSpeed);
             return;
         }
-   
-        _controlEntity.SearchEnemy(_currentHaracteristic.DetectionRange, DetectEnemy);
+        
+        _controlEntity.SearchEnemy(_cube.DetectionRange, DetectEnemy);
     }
     private bool CheckTargetHp(Entity entity)
     {
-        if (entity != _entity)
+        if (_entity != entity)
         {
-            _entity = _entity;
+            _entity = entity;
         }
 
        return CheckHaractericsic();
@@ -67,7 +63,7 @@ public class LogicCube : MonoBehaviour
 
     private bool CheckHaractericsic()
     {
-        if (_haracteristicTarget.Hp <= 0)
+        if (_entity.Hp <= 0)
         {
             _entity = null;
             return false;

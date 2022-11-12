@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PoolFabric<T,K> : SpawnFabric<K> where T : PoolReact where K : Enum
+public abstract class PoolFabric<K,T> : SpawnFabric<K> where T : PoolReact where K : Enum
 {
     protected Pool<T> _pool = new Pool<T>();
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Test/1")]
 public class CubeHaracteristic : Haracteristic
 {
   

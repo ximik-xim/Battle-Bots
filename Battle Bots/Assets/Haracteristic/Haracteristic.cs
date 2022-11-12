@@ -10,9 +10,5 @@ public abstract class Haracteristic : ScriptableObject
     }
     
     [SerializeField] private float _Hp;
-    
 
-
-    
-    
 }
