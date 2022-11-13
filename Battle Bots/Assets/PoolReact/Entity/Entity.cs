@@ -6,40 +6,57 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class Entity : PoolReact
-{
-    [SerializeField]
-    private UnityEvent<float> _updateHp;
+{  
     public float Hp
     {
         get => _Hp;
         private set
         {
             _Hp = value;
-            
-            if (_Hp <= 0)
+
+            if (_isKill == false)
             {
-                _Hp = 0;
-                gameObject.SetActive(false);
+                if (_Hp <= 0)
+                {
+                    _Hp = 0;
+
+                    killThisEntity?.Invoke();
+                    gameObject.SetActive(false);
+                    _isKill = true;
+                }
             }
+
         }
-        
+
     }
+    [SerializeField]
+    private UnityEvent<float> _updateHp;
+    [SerializeField] 
+    private UnityEvent<float> _updateMaxHeal;
+    [SerializeField] 
+    private float _Hp;
     
-    [SerializeField] private float _Hp;
+    private Action killThisEntity;
+    private bool _isKill = false;
+   
     
     public void SetHara(Haracteristic haracteristic)
     {
+        _isKill = false;
         _Hp = haracteristic.Hp;
+        _updateMaxHeal.Invoke(Hp);
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage,Action action)
     {
+        killThisEntity = action;
         Hp -= damage;
+        _updateHp.Invoke(Hp);
     }
     
-    public void Kill()
+    public void Kill(Action action)
     {
         Hp = 0;
     }
-    
+
 }
