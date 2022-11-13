@@ -5,7 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class ScanerTrigger : AbstractScan
 {
-    [SerializeField] private Entity _bazeEntity;
+    [SerializeField] 
+    private Entity _parentEntity;
+    
     private SphereCollider _collider;
     private bool _scane;
     private Action<Entity> _action;
@@ -13,10 +15,10 @@ public class ScanerTrigger : AbstractScan
     {
         if (_scane == true)
         {
-            if (other.transform.gameObject.TryGetComponent<Mark>(out Mark mark))
+            if (other.transform.gameObject.TryGetComponent<EnemyMark>(out EnemyMark mark))
             {
                 Entity entity = mark.GetEntity();
-                if (_bazeEntity.Equals(entity)==false)
+                if (_parentEntity.Equals(entity)==false)
                 {
                     _action.Invoke(entity);
                 }

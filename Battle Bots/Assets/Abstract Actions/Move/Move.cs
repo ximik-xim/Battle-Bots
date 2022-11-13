@@ -11,7 +11,7 @@ public class Move : AbstractMove
     [SerializeField] 
     private NavMeshAgent _agent;
 
-    private float _distance = 2;
+    private float _distance;
     private Action _action;
     private Transform _target;
     private Vector3 _targetPosition;

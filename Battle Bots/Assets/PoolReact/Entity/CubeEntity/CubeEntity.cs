@@ -28,17 +28,15 @@ public class CubeEntity : Entity
     {
         get => _detectionRange;
     }
-
-    [SerializeField] private float _moveSpeed;
-    [SerializeField] private float _damage;
-    [SerializeField] private float _rangeAttack;
-    [SerializeField] private float _detectionRange;
-
     public TypeCube CubeType
     {
         get => _typeCube;
     }
 
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _damage;
+    [SerializeField] private float _rangeAttack;
+    [SerializeField] private float _detectionRange;
     [SerializeField]
     private TypeCube _typeCube;
     

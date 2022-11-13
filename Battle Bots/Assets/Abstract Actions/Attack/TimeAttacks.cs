@@ -9,22 +9,28 @@ public class TimeAttacks : AbstractAttack
 {
     [SerializeField] 
     private float _speedAttack;
-    private CancellationTokenSource _token = new CancellationTokenSource();
+    
     private Action<bool> _endAttack;
-    public override void Attack(Entity target, float distanceAttack, float damage, Action<bool> endAttack)
+    private bool _isActive = false;
+    private CancellationTokenSource _token = new CancellationTokenSource();
+    private void OnEnable()
+    {
+        _isActive = false;
+    }
+
+    public override void Attack(Entity target, float distanceAttack, float damage, Action<bool> endAttack,Action killEntity)
     {
         _endAttack = endAttack;
-        TimeAttack(() => Test(target, distanceAttack, damage), _token.Token);
+        TimeAttack(() => TakeDamage(target, distanceAttack, damage,killEntity), _token.Token);
     }
 
 
-    private void Test(Entity target, float distanceAttack, float damage)
+    private void TakeDamage(Entity target, float distanceAttack, float damage,Action killEntity)
     {
         if (Vector3.Distance(transform.position, target.transform.position) <= distanceAttack)
         {
-            target.TakeDamage(damage);
+            target.TakeDamage(damage, killEntity);
         }
-        
         
         _endAttack?.Invoke(true);
     }
@@ -37,11 +43,16 @@ public class TimeAttacks : AbstractAttack
     private async Task TimeAttack(Action action,CancellationToken token)
     {
         await Task.Delay((int) (1000 * _speedAttack), token);
-        action.Invoke();
+     
+        if (_isActive == false)
+        {
+            action?.Invoke();    
+        }
     }
 
     private void OnDisable()
     {
         _token.Cancel();
+        _isActive = true;
     }
 }

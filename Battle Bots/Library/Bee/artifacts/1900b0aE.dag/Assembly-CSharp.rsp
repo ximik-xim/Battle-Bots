@@ -362,6 +362,7 @@
 "Assets/Abstract Actions/Move/Move.cs"
 "Assets/Abstract Actions/Scan/AbstractScan.cs"
 "Assets/Abstract Actions/Scan/ScanerTrigger.cs"
+"Assets/CameraRenderer.cs"
 "Assets/ControlEntity.cs"
 "Assets/Fabric/PollFabric/PoolFabric.cs"
 "Assets/Fabric/PollFabric/PreafbeFabric/DicteneryPrefabe/CubeFabric.cs"
@@ -372,13 +373,14 @@
 "Assets/Haracteristic/Haracteristic.cs"
 "Assets/LogicCube.cs"
 "Assets/Mark.cs"
-"Assets/MySerializeDictenery/CustomDictionary.cs"
 "Assets/MySerializeDictenery/SerializeDictionary.cs"
-"Assets/PointSpawn.cs"
 "Assets/Pool.cs"
 "Assets/PoolReact/Entity/CubeEntity/CubeEntity.cs"
 "Assets/PoolReact/Entity/Entity.cs"
 "Assets/PoolReact/PoolReact.cs"
+"Assets/SpawnPoint/PointSpawn.cs"
+"Assets/TesterA.cs"
+"Assets/UpdateCanvase.cs"
 -langversion:9.0
 
 /deterministic

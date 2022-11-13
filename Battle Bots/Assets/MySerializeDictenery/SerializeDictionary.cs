@@ -5,7 +5,7 @@ using UnityEngine;
 public class SerializeDictionary<K,D>:Dictionary<K,D>
 {
     [SerializeField]
-    private List<Et<K, D>> _listKeyAndData;
+    private List<KeyAndData<K, D>> _listKeyAndData;
 
     public void Initialization()
     {
@@ -19,7 +19,7 @@ public class SerializeDictionary<K,D>:Dictionary<K,D>
 }
 
 [System.Serializable]
-public class Et<K, D>
+public class KeyAndData<K, D>
 {
     public K _k;
     public D _d;

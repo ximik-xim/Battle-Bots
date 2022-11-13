@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class PoolFabric<K,T> : SpawnFabric<K> where T : PoolReact where K : Enum
 {
+    [SerializeField]
     protected Pool<T> _pool = new Pool<T>();
 
     protected PoolReact InstantiatePrefabe(T prefabEntity)
